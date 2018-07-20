@@ -16,6 +16,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Wherever the Neo4J storage location is.
         File storeDir = new File("/home/diana/Dokumente/test");
+        
+        //neo4j v3.3.3
         HashMap<String, String> map = new HashMap<>();
         map.put("dbms.connector.http.address", "127.0.0.1:7474");
         map.put("dbms.connector.http.enabled", "true");
@@ -25,6 +27,8 @@ public class Main {
         map.put("dbms.shell.port", "1337");
         
         ServerBootstrapper serverBootstrapper = new CommunityBootstrapper();
+        
+        //neo4j v3.1.1
 //        serverBootstrapper.start(
 //            storeDir,
 //            Optional.empty(), // omit configfile, properties follow
@@ -43,7 +47,6 @@ public class Main {
                 Optional.empty(), // omit configfile, properties follow
                 map
             );
-        // ^^ serverBootstrapper.start() also registered shutdown hook!
 
         NeoServer neoServer = serverBootstrapper.getServer();
         GraphDatabaseService gdb = neoServer.getDatabase().getGraph();
